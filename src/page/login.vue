@@ -100,16 +100,29 @@ export default {
     };
   },
   methods: {
-    // submitForm(formName) {
-    //   this.$refs[formName].validate((valid) => {
-    //     if (valid) {
-    //       alert("submit!");
-    //     } else {
-    //       console.log("error submit!!");
-    //       return false;
-    //     }
-    //   });
-    // },
+    submitForm(formName) {
+      let _this = this;
+      axios
+        .get("/api/user/auth/innerlogin", {
+          params: {
+            username: this.ruleForm.account,
+            password: this.ruleForm.account,
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          let user = res;
+         
+        });
+      _this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert("submit!");
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
     // resetForm(formName) {
     //   this.$refs[formName].resetFields();
     // },
