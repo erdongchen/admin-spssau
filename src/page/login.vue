@@ -101,9 +101,12 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      let _this = this;
+      console.log(formName);
+      console.log(this);
+      let that;
+      that = this;
       axios
-        .get("/api/user/auth/innerlogin", {
+        .get("https://test.spssau.com/api/user/auth/innerlogin", {
           params: {
             username: this.ruleForm.account,
             password: this.ruleForm.account,
@@ -111,10 +114,9 @@ export default {
         })
         .then((res) => {
           console.log(res);
-          let user = res;
-         
+          let user = res; // eslint-disable-line no-unused-vars
         });
-      _this.$refs[formName].validate((valid) => {
+      that.$refs[formName].validate((valid) => {
         if (valid) {
           alert("submit!");
         } else {
