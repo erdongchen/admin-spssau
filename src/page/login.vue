@@ -105,11 +105,11 @@ export default {
       console.log(this);
       let that;
       that = this;
-      axios
+      this.$http
         .get("https://test.spssau.com/api/user/auth/innerlogin", {
           params: {
             username: this.ruleForm.account,
-            password: this.ruleForm.account,
+            password: this.ruleForm.password,
           },
         })
         .then((res) => {
