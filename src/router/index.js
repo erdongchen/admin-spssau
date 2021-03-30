@@ -14,41 +14,45 @@ const routes = [{
     path: "/",
     name: "Login",
     component: Login,
-    children: [{
-        path: "/",
-        name: "Manage",
-        component: Manage,
-      }, {
-        path: '/OperatingIndex',
-        component: OperatingIndex,
-        meta: ['运营指标'],
-      },
-      {
-        path: '/',
-        component: BasicInformation,
-        meta: ['基本信息'],
-      },
-      {
-        path: '/',
-        component: NoInvoice,
-        meta: ['未开发票'],
-      },
-      {
-        path: '/',
-        component: WeChatOrders,
-        meta: ['微信订单'],
-      },
-      {
-        path: '/',
-        component: VipTime,
-        meta: ['会员时间'],
-      },
-      {
-        path: '/',
-        component: MobilePhone,
-        meta: ['会员时间'],
-      },
+    meta:{
+      loginRequest:true
+    },
+    children: [
     ]
+  },
+  {
+    path: "/manage",
+    name: "Manage",
+    component: Manage,
+  }, {
+    path: '/OperatingIndex',
+    component: OperatingIndex,
+    meta: ['运营指标'],
+  },
+  {
+    path: '/',
+    component: BasicInformation,
+    meta: ['基本信息'],
+  },
+  {
+    path: '/',
+    component: NoInvoice,
+    meta: ['未开发票'],
+  },
+  {
+    path: '/',
+    component: WeChatOrders,
+    meta: ['微信订单'],
+  },
+  {
+    path: '/',
+    component: VipTime,
+    meta: ['会员时间'],
+  },
+  {
+    path: '/',
+    component: MobilePhone,
+    meta: ['会员时间'],
   },
   // },
   // {

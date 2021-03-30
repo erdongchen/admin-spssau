@@ -2,13 +2,13 @@
 import axios from 'axios'
 
 // 创建axios实例
-const httpService = axios.create({
+const service = axios.create({
 	baseURL: "http://localhost:8080/", //url前缀
-	timeout: 3000 //请求超时时间
+	timeout: 5000 //请求超时时间
 })
 
 // 添加请求拦截器：request拦截器：
-httpService.interceptors.request.use(
+service.interceptors.request.use(
 	config => {
 		// // 根据条件加入token-安全携带
 		//       if (true) { // 需自定义
@@ -24,10 +24,10 @@ httpService.interceptors.request.use(
 )
 
 //  添加响应拦截器：response拦截器
-httpService.interceptors.response.use(
+service.interceptors.response.use(
 	response => {
 		// 统一处理状态
-		// const res = response.data;
+		const res = response.data;
 		// if (res.statuscode != 1) { //需要自定义，
 		// 	// 返回异常
 		// 	return Promise.reject({
@@ -96,7 +96,7 @@ httpService.interceptors.response.use(
  * */
 export function get(url, params = {}) {
 	return new Promise((resolve, reject) => {
-		httpService({
+		service({
 			url: url,
 			method: 'get',
 			params: params
@@ -115,7 +115,7 @@ export function get(url, params = {}) {
  * */
 export function post(url, params = {}) {
 	return new Promise((resolve, reject) => {
-		httpService({
+		service({
 			url: url,
 			method: 'post',
 			data: params
@@ -133,7 +133,7 @@ export function post(url, params = {}) {
  * */
 export function fileUpload(url, params = {}) {
 	return new Promise((resolve, reject) => {
-		httpService({
+		service({
 			url: url,
 			method: 'post',
 			data: params,

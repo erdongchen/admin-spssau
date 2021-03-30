@@ -106,15 +106,18 @@ export default {
       let that;
       that = this;
       this.$http
-        .get("https://test.spssau.com/api/user/auth/innerlogin", {
-          params: {
-            username: this.ruleForm.account,
-            password: this.ruleForm.password,
-          },
+        .post("http://20181024Mock.com/api/user/auth/innerlogin", {
+          username: this.ruleForm.account,
+          password: this.ruleForm.password,
         })
         .then((res) => {
           console.log(res);
-          let user = res; // eslint-disable-line no-unused-vars
+          let stringjson = JSON.stringify(res);
+          // this.$store.commit("token", stringjson);
+          // 以秒为单位，设置1天过去
+          // this.$cookies.set("user", stringjson, 60 * 60 * 24, "/");
+          window.localStorage.setItem("user", stringjson);
+          this.$router.push("/manage");
         });
       that.$refs[formName].validate((valid) => {
         if (valid) {
